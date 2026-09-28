@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "motion-designer",
+  "owner": {
+    "name": "kaventro",
+    "email": "301901286+kaventro@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "A motion designer for Claude Code: launch films of your app."
+  },
+  "plugins": [
+    {
+      "name": "motion-designer",
+      "source": "./",
+      "description": "App launch films with the real UI in an iPhone or a laptop window, cut to music on the beat, styled, voiced, checked frame by frame and rendered.",
+      "version": "1.0.0",
+      "category": "design",
+      "keywords": ["video", "motion-designer", "launch-film", "motion-design", "music", "voiceover"]
+    }
+  ]
+}

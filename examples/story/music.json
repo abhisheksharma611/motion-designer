@@ -1,0 +1,14 @@
+{
+  "bpm": 104,
+  "key": "D major",
+  "seconds": 64,
+  "out": "audio/source",
+  "takes": {
+    "guitar": {"seed": 5, "caption": "A lighthearted, minimal instrumental built on a warm nylon-string acoustic guitar figure and a soft, laid-back lo-fi hip-hop drum beat with a muted kick and a gentle rimshot. A round, subtle bassline supports the guitar. The arrangement stays sparse and uncluttered with plenty of space, like background music for a friendly app explainer video. No vocals."},
+    "piano": {"seed": 9, "caption": "A warm, playful and minimal instrumental with soft felt piano chords, light pizzicato strings and finger snaps over a gentle, laid-back drum groove with a soft kick. A round, mellow bass keeps it moving. Sparse and airy, leaving plenty of room, like background music for a friendly product story. No vocals."},
+    "mallets": {"seed": 13, "caption": "A light, quirky and minimal instrumental groove with wooden percussion, soft marimba and kalimba notes, a muted kick and handclaps, and a round plucked bass. Playful and clean with lots of space, like background music for an animated app explainer. No vocals."},
+    "rhodes": {"seed": 17, "caption": "A calm, sunny lo-fi instrumental with warm Rhodes electric piano chords, a dusty laid-back hip-hop beat, soft vinyl texture and a mellow round bass. Minimal and uncluttered, a relaxed background for a friendly product video. No vocals."},
+    "plucks": {"seed": 21, "caption": "A clean, minimal and friendly electronic instrumental with soft plucked synths, a gentle pad, a light muted kick and crisp finger snaps. Understated and airy with lots of space, calm and confident, like background music for a modern app explainer. No vocals."},
+    "ukulele": {"seed": 27, "caption": "A breezy, lighthearted acoustic instrumental with a strummed ukulele, soft hand percussion, a tambourine on the offbeat and a warm upright bass. Simple, sparse and sunny, like background music for a friendly animated product video. No vocals."}
+  }
+}

@@ -1,0 +1,1 @@
+window.STATS = {"session": "c8f1b0cf-f8e3-41d5-b52a-75d29d0c89bb", "from": "2026-09-28T06:10:11.233000+00:00", "until": "2026-09-28T09:51:12.076000+00:00", "secs": 8461, "out": 371277, "read": 111574187, "calls": 221, "marks": {"doctor": {"secs": 5, "out": 492, "read": 73908, "calls": 1}, "build": {"secs": 592, "out": 47617, "read": 4140245, "calls": 28}}};

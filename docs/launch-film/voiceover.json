@@ -1,0 +1,95 @@
+{
+ "frames": 3600,
+ "fps": 60,
+ "music": "audio/edit.wav",
+ "out": "audio/voiceover-mix",
+ "backend": "chatterbox",
+ "voices": {
+  "narrator": {
+   "sample": "turbo",
+   "exaggeration": 0.6,
+   "cfg_weight": 0.4,
+   "say": "Samantha",
+   "kokoro": "am_michael"
+  }
+ },
+ "lines": [
+  {
+   "id": "n01",
+   "start": 4.319,
+   "voice": "narrator",
+   "text": "One command in Claude Code."
+  },
+  {
+   "id": "n02",
+   "start": 8.068,
+   "voice": "narrator",
+   "text": "It checks your tools, then reads your app."
+  },
+  {
+   "id": "n03",
+   "start": 11.484,
+   "voice": "narrator",
+   "text": "Every claim is checked against the code."
+  },
+  {
+   "id": "n04",
+   "start": 15.234,
+   "voice": "narrator",
+   "text": "A plan, and four stills for your approval."
+  },
+  {
+   "id": "n05",
+   "start": 19.921,
+   "voice": "narrator",
+   "text": "Every frame is checked."
+  },
+  {
+   "id": "n06",
+   "start": 25.546,
+   "voice": "narrator",
+   "text": "And the music is cut on the beat."
+  },
+  {
+   "id": "n07",
+   "start": 31.405,
+   "voice": "narrator",
+   "text": "Your real interface, in motion."
+  },
+  {
+   "id": "n08",
+   "start": 36.093,
+   "voice": "narrator",
+   "text": "On a phone, or on a laptop."
+  },
+  {
+   "id": "n09",
+   "start": 41.952,
+   "voice": "narrator",
+   "text": "This voice was made on this Mac, with Chatterbox."
+  },
+  {
+   "id": "n10",
+   "start": 46.17,
+   "voice": "narrator",
+   "text": "This film took one session in Claude Code."
+  },
+  {
+   "id": "n11",
+   "start": 50.389,
+   "voice": "narrator",
+   "text": "Free, open source, and local."
+  },
+  {
+   "id": "n12",
+   "start": 57.326,
+   "voice": "narrator",
+   "text": "Motion designer."
+  }
+ ],
+ "mix": {
+  "music_gain": 0.3,
+  "duck_ratio": 2.8,
+  "lufs": -16
+ }
+}

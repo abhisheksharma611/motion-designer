@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Oryn: Files, in motion</title>
+<style>
+  :root {
+    --canvas: #EEE9E1;
+    --canvas-lift: #F3EFE9;
+    --ink: #141416;
+    --muted: #6F6A62;
+    --space-black: #2A2B2F;
+  }
+  html, body { margin: 0; padding: 0; background: var(--canvas); }
+  #stage {
+    position: relative;
+    width: 1440px;
+    height: 1440px;
+    overflow: hidden;
+    background: radial-gradient(ellipse 72% 62% at 50% 46%, var(--canvas-lift) 0%, var(--canvas) 62%, #E9E3D9 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .abs { position: absolute; left: 0; top: 0; }
+
+  #world { transform-origin: 0 0; }
+
+  #mac { width: 1640px; height: 1092px; }
+  #mac-shadow {
+    left: 40px; top: 1062px; width: 1560px; height: 70px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(20, 16, 12, 0.42), rgba(20, 16, 12, 0));
+    filter: blur(6px);
+  }
+  #mac-desk-shadow { left: 64px; top: 26px; width: 1512px; height: 982px; border-radius: 14px; }
+  #mac-deck {
+    left: 0; top: 1028px; width: 1640px; height: 40px;
+    clip-path: polygon(40px 0, 1600px 0, 1640px 40px, 0 40px);
+    background: linear-gradient(180deg, #1C1D20 0%, #2E2F34 70%, #3A3B40 100%);
+  }
+  #mac-lip {
+    left: 0; top: 1068px; width: 1640px; height: 24px;
+    border-radius: 0 0 22px 22px;
+    background: linear-gradient(180deg, #4A4B51 0%, #2C2D31 30%, #1B1C1F 100%);
+  }
+  #mac-lip::after {
+    content: ''; position: absolute; left: 730px; top: 0; width: 180px; height: 7px;
+    border-radius: 0 0 8px 8px; background: #17181A;
+  }
+  #mac-lid { left: 46px; top: 0; width: 1548px; height: 1028px; transform-origin: 50% 100%; transform-style: preserve-3d; }
+  #mac-front, #mac-back { position: absolute; inset: 0; border-radius: 28px; backface-visibility: hidden; }
+  #mac-front {
+    background: #07070A;
+    box-shadow: inset 0 0 0 3px #2F3035, inset 0 0 0 5px #0B0B0D;
+  }
+  #mac-back {
+    transform: rotateX(180deg);
+    background: linear-gradient(180deg, #3A3B40 0%, #2A2B2F 55%, #232427 100%);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.05);
+  }
+  #mac-display {
+    left: 18px; top: 26px; width: 1512px; height: 982px; overflow: hidden;
+    border-radius: 12px 12px 2px 2px; background: #000;
+  }
+  #mac-notch {
+    left: 676px; top: 26px; width: 196px; height: 30px; border-radius: 0 0 14px 14px; background: #07070A;
+  }
+  #mac-notch::after {
+    content: ''; position: absolute; left: 92px; top: 10px; width: 10px; height: 10px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #1d2a3a, #050608 70%);
+  }
+  .wallpaper {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 24% 18%, rgba(84, 54, 255, 0.34), rgba(84, 54, 255, 0) 70%),
+      radial-gradient(ellipse 60% 55% at 86% 92%, rgba(10, 132, 255, 0.26), rgba(10, 132, 255, 0) 70%),
+      #0B0B10;
+  }
+  .grain { position: absolute; inset: 0; opacity: 0.07; mix-blend-mode: overlay; }
+
+  #win-shadow {
+    border-radius: 12px; background: #141416;
+    box-shadow: 0 50px 90px -30px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.6);
+  }
+  #win { width: 1280px; height: 800px; overflow: hidden; border-radius: 12px; }
+  #app { position: absolute; left: 0; top: 0; width: 1280px; height: 800px; border: 0; display: block; background: #141416; }
+  #win-edge { pointer-events: none; border-radius: 12px; width: 1280px; height: 800px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.09); }
+  #traffic { position: absolute; left: 13px; top: 13px; display: flex; gap: 8px; }
+  #traffic i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  #traffic i:nth-child(1) { background: #FF5F57; box-shadow: inset 0 0 0 0.5px #E0443E; }
+  #traffic i:nth-child(2) { background: #FEBC2E; box-shadow: inset 0 0 0 0.5px #DEA123; }
+  #traffic i:nth-child(3) { background: #28C840; box-shadow: inset 0 0 0 0.5px #1AAB29; }
+  #pointer { width: 22px; height: 32px; transform-origin: 3px 2px; }
+
+  .menubar {
+    position: absolute; left: 0; right: 0; top: 0; height: 30px;
+    display: flex; align-items: center; gap: 21px; padding: 0 20px;
+    background: rgba(14, 12, 26, 0.46); box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
+    color: #F2F2F5; font: 500 14px/30px -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  }
+  .menubar b { font-weight: 700; }
+  .menubar .right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+  .menubar svg, .tray svg, .topbar svg { display: block; }
+
+  .desk { width: 1512px; height: 982px; border-radius: 14px; overflow: hidden; background: #000; }
+  .desk-window {
+    left: 116px; top: 100px; width: 1280px; height: 800px; overflow: hidden; background: #141416;
+    box-shadow: 0 50px 90px -30px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.6);
+  }
+  .desk-window .edge { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.09); pointer-events: none; }
+  #desk-win .desk-window { border-radius: 8px; }
+  #desk-linux .desk-window { border-radius: 12px; }
+  .mirror { position: absolute; left: 0; top: 0; width: 1280px; height: 800px; border: 0; display: block; background: #141416; }
+  .win-wall {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 30% 42% at 58% 52%, rgba(120, 180, 255, 0.75), rgba(120, 180, 255, 0) 70%),
+      radial-gradient(ellipse 52% 62% at 56% 56%, rgba(40, 110, 240, 0.65), rgba(40, 110, 240, 0) 72%),
+      radial-gradient(ellipse 80% 70% at 12% 8%, rgba(36, 62, 160, 0.55), rgba(36, 62, 160, 0) 70%),
+      #0A1433;
+  }
+  .taskbar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 48px;
+    background: rgba(24, 27, 38, 0.88); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    color: #fff; font: 400 13px/17px "Segoe UI", system-ui, sans-serif;
+  }
+  .taskbar .search {
+    display: flex; align-items: center; gap: 9px; width: 196px; height: 32px; padding: 0 14px; box-sizing: border-box;
+    border-radius: 16px; background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.72);
+  }
+  .taskbar .app { position: relative; width: 40px; height: 40px; border-radius: 6px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
+  .taskbar .app img { width: 28px; height: 28px; }
+  .taskbar .app::after { content: ''; position: absolute; left: 14px; bottom: 1px; width: 12px; height: 3px; border-radius: 2px; background: #60B4FF; }
+  .tray { position: absolute; right: 118px; top: 0; height: 48px; display: flex; align-items: center; gap: 12px; }
+  .taskbar .clock { position: absolute; right: 16px; top: 7px; text-align: right; }
+  .gnome-wall {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 72% 28%, rgba(233, 84, 32, 0.6), rgba(233, 84, 32, 0) 70%),
+      radial-gradient(ellipse 70% 70% at 18% 82%, rgba(119, 33, 111, 0.75), rgba(119, 33, 111, 0) 70%),
+      #2C0E2A;
+  }
+  .topbar {
+    position: absolute; left: 0; right: 0; top: 0; height: 32px; background: #0E0E0F;
+    color: #F2F2F2; font: 600 14px/32px Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
+  .topbar .act { position: absolute; left: 16px; }
+  .topbar .time { position: absolute; left: 0; right: 0; text-align: center; }
+  .topbar .sys { position: absolute; right: 12px; top: 5px; height: 22px; padding: 0 10px; border-radius: 11px; display: flex; align-items: center; gap: 10px; }
+  .dock {
+    position: absolute; left: 0; top: 32px; bottom: 0; width: 72px; background: rgba(18, 16, 20, 0.72);
+    display: flex; flex-direction: column; align-items: center; padding: 14px 0; box-sizing: border-box;
+  }
+  .dock .app { position: relative; width: 52px; height: 52px; border-radius: 12px; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; }
+  .dock .app img { width: 40px; height: 40px; }
+  .dock .app::before { content: ''; position: absolute; left: -8px; top: 23px; width: 4px; height: 6px; border-radius: 3px; background: #E95420; }
+  .dock .apps { margin-top: auto; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; }
+
+  .label {
+    position: absolute; left: 0; top: 0; width: 400px; margin-left: -200px; text-align: center;
+    font-size: 36px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink);
+  }
+
+  #lockup { transform-origin: 0 0; }
+  #mark { position: absolute; left: 0; top: 0; overflow: visible; transform-origin: 0 0; }
+  #mark path { transform-box: fill-box; }
+  .glyph {
+    position: absolute; left: 0; top: 0;
+    font-size: 212px; font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1; color: var(--ink); white-space: pre;
+    transform-origin: 0 0;
+  }
+  #pill {
+    border-radius: 12px;
+    background: #1C1C1F;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -18px rgba(40, 30, 20, 0.45);
+    overflow: hidden;
+  }
+  #pill .meta {
+    position: absolute; top: 0; height: 100%;
+    display: flex; align-items: center;
+    font-size: 25px; color: rgba(245,245,247,0.55);
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  #tagline {
+    width: 1440px; text-align: center;
+    font-size: 46px; font-weight: 500; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="world" class="abs">
+    <div id="mac" class="abs">
+      <div id="mac-shadow" class="abs"></div>
+      <div id="mac-desk-shadow" class="abs"></div>
+      <div id="mac-deck" class="abs"></div>
+      <div id="mac-lip" class="abs"></div>
+      <div id="mac-lid" class="abs">
+        <div id="mac-back"></div>
+        <div id="mac-front">
+          <div id="mac-display" class="abs">
+            <div id="screen" class="abs" style="width:1512px;height:982px">
+              <div class="wallpaper"></div>
+              <svg class="grain" width="1512" height="982"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+              <div class="menubar"><b>Oryn</b><span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Window</span><span>Help</span><span class="right"><svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity="0.5"/><rect x="2.5" y="2.5" width="16" height="8" rx="1.8" fill="currentColor"/><rect x="24.5" y="4.5" width="2" height="4" rx="1" fill="currentColor" fill-opacity="0.5"/></svg><svg width="17" height="13" viewBox="0 0 17 13"><path d="M8.5 12.2 11 9.2a3.8 3.8 0 0 0-5 0Z M3.9 7.1a6.8 6.8 0 0 1 9.2 0l1.4-1.7a9 9 0 0 0-12 0Z M1.3 4a10.6 10.6 0 0 1 14.4 0L17 2.5A12.6 12.6 0 0 0 0 2.5Z" fill="currentColor"/></svg><span>Sat 26 Sep&nbsp;&nbsp;10:24</span></span></div>
+              <div id="win-shadow" class="abs" style="left:116px;top:100px;width:1280px;height:800px"></div>
+              <div id="win" class="abs" style="left:116px;top:100px">
+                <iframe id="app" scrolling="no" title="Oryn"></iframe>
+                <div id="traffic"><i></i><i></i><i></i></div>
+                <div id="win-edge" class="abs"></div>
+                <svg id="pointer" class="abs" viewBox="0 0 22 32" aria-hidden="true">
+                  <path d="M2.5 2.2 L2.5 25.6 L8.1 20.3 L11.9 29.2 L15.6 27.6 L11.9 18.9 L19.6 18.9 Z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div id="mac-notch" class="abs"></div>
+        </div>
+      </div>
+    </div>
+    <div id="desk-win" class="abs desk">
+      <div class="win-wall"></div>
+      <div class="desk-window abs"><iframe class="mirror" id="app-win" scrolling="no" title="Oryn on Windows"></iframe><div class="edge"></div></div>
+      <div class="taskbar"><span class="search"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="6" cy="6" r="4.6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="m9.4 9.4 3.6 3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Search</span><span class="app"><img src="assets/icons/48/1.png" alt=""></span>
+        <span class="tray"><svg width="17" height="13" viewBox="0 0 17 13"><path d="M8.5 12.2 11 9.2a3.8 3.8 0 0 0-5 0Z M3.9 7.1a6.8 6.8 0 0 1 9.2 0l1.4-1.7a9 9 0 0 0-12 0Z M1.3 4a10.6 10.6 0 0 1 14.4 0L17 2.5A12.6 12.6 0 0 0 0 2.5Z" fill="currentColor"/></svg><svg width="15" height="13" viewBox="0 0 15 13"><path d="M1 4.5h3l4-3.5v11l-4-3.5H1Z" fill="currentColor"/><path d="M10.3 3.8a4 4 0 0 1 0 5.4 M12.3 1.8a6.8 6.8 0 0 1 0 9.4" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity="0.5"/><rect x="2.5" y="2.5" width="16" height="8" rx="1.8" fill="currentColor"/><rect x="24.5" y="4.5" width="2" height="4" rx="1" fill="currentColor" fill-opacity="0.5"/></svg></span><span class="clock">10:24<br>26/09/2026</span></div>
+    </div>
+    <div id="desk-linux" class="abs desk">
+      <div class="gnome-wall"></div>
+      <div class="desk-window abs"><iframe class="mirror" id="app-linux" scrolling="no" title="Oryn on Linux"></iframe><div class="edge"></div></div>
+      <div class="topbar"><span class="act">Activities</span><span class="time">Sat 26 Sep&nbsp;&nbsp;10:24</span><span class="sys"><svg width="17" height="13" viewBox="0 0 17 13"><path d="M8.5 12.2 11 9.2a3.8 3.8 0 0 0-5 0Z M3.9 7.1a6.8 6.8 0 0 1 9.2 0l1.4-1.7a9 9 0 0 0-12 0Z M1.3 4a10.6 10.6 0 0 1 14.4 0L17 2.5A12.6 12.6 0 0 0 0 2.5Z" fill="currentColor"/></svg><svg width="15" height="13" viewBox="0 0 15 13"><path d="M1 4.5h3l4-3.5v11l-4-3.5H1Z" fill="currentColor"/><path d="M10.3 3.8a4 4 0 0 1 0 5.4 M12.3 1.8a6.8 6.8 0 0 1 0 9.4" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg><svg width="13" height="13" viewBox="0 0 13 13"><path d="M4 2.6a5.2 5.2 0 1 0 5 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M6.5 0.8v5.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+      <div class="dock"><span class="app"><img src="assets/icons/48/1.png" alt=""></span><span class="apps"><svg width="22" height="22" viewBox="0 0 22 22" fill="#E8E8EA"><circle cx="3" cy="3" r="2.3"/><circle cx="11" cy="3" r="2.3"/><circle cx="19" cy="3" r="2.3"/><circle cx="3" cy="11" r="2.3"/><circle cx="11" cy="11" r="2.3"/><circle cx="19" cy="11" r="2.3"/><circle cx="3" cy="19" r="2.3"/><circle cx="11" cy="19" r="2.3"/><circle cx="19" cy="19" r="2.3"/></svg></span></div>
+    </div>
+  </div>
+  <div id="labels" class="abs"><div class="label" id="lbl-mac">macOS</div><div class="label" id="lbl-win">Windows</div><div class="label" id="lbl-linux">Linux</div></div>
+  <div id="pill" class="abs"></div>
+  <div id="lockup" class="abs"><svg id="mark" aria-label="Oryn"></svg></div>
+  <div id="tagline" class="abs">Your files. In flow.</div>
+</div>
+<script src="mark.js"></script>
+<script src="app-bundle.js"></script>
+<script src="film.js"></script>
+</body>
+</html>

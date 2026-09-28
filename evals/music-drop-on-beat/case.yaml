@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: music-drop-on-beat
+context:
+  scaffold_script: fixture.sh

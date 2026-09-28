@@ -1,0 +1,95 @@
+:root {
+  --bg: #F4F5F1;
+  --card: #FFFFFF;
+  --cardElevated: #FFFFFF;
+  --pill: #FFFFFF;
+  --tray: #EBEEE8;
+  --key: #FFFFFF;
+  --keyOp: #E4E8E1;
+  --auraTop: #D3F0C9;
+  --auraBottom: #94D788;
+  --auraGlow: #E4F4DE;
+  --t1: #141A15;
+  --t2: #4D564E;
+  --t3: #636C64;
+  --accent: #22592B;
+  --forest: #1C2E1D;
+  --onForest: #FFFFFF;
+  --leaf: #3A9737;
+  --leafSoft: #E4F4DE;
+  --green: #26762F;
+  --spent: #BF3B33;
+  --spentTint: #FBE7E4;
+  --sep: rgba(20, 26, 21, 0.08);
+  --hair: #E1E5DE;
+  --shadowRest: 0 4px 16px rgba(20, 26, 21, 0.06);
+  --shadowRaised: 0 10px 32px rgba(20, 26, 21, 0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  font-family: Manrope, sans-serif;
+  color: var(--t1);
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+#stage {
+  position: relative;
+  width: 1440px;
+  height: 1440px;
+  overflow: hidden;
+  background: var(--bg);
+  contain: strict;
+}
+
+.layer, .cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.full { position: absolute; left: 0; top: 0; width: 1440px; height: 1440px; }
+.screen { position: absolute; left: 0; top: 0; width: 402px; height: 874px; }
+.abs { position: absolute; }
+.row { display: flex; align-items: center; }
+.center { display: flex; align-items: center; justify-content: center; }
+.mask { overflow: hidden; }
+.capsule { border-radius: 999px; }
+.t { display: inline-block; white-space: nowrap; line-height: 1.366; vertical-align: top; }
+
+.sym {
+  display: inline-block;
+  flex: none;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.pill { background: var(--pill); box-shadow: var(--shadowRest); }
+.card { background: var(--card); border-radius: 24px; box-shadow: var(--shadowRest); }
+.fab { box-shadow: var(--shadowRaised); }
+.sep { background: var(--sep); }
+
+.key {
+  position: absolute;
+  height: 48px;
+  border-radius: 13px;
+  border: 1px solid var(--hair);
+  background: var(--key);
+}
+.key.op { background: var(--keyOp); }
+
+.tap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 0 0 2.5px rgba(20, 26, 21, 0.5), 0 2px 10px rgba(20, 26, 21, 0.12);
+  pointer-events: none;
+}
+
+.hidden { visibility: hidden; }

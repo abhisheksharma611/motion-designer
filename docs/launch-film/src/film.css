@@ -1,0 +1,74 @@
+:root {
+  --bg: #0D0F14;
+  --ink: #F2F4F8;
+  --ink2: #9AA3B2;
+  --ink3: #5D6675;
+  --accent: #8B7CFF;
+  --accent2: #53E0B4;
+  --hair: rgba(255, 255, 255, 0.08);
+  --shade: #000000;
+  --edge: rgba(255, 255, 255, 0.13);
+
+  --winBg: #14161C;
+  --side: #1A1D24;
+  --wall1: #1C2130;
+  --wall2: #0E1016;
+  --menuBg: rgba(18, 20, 26, 0.72);
+  --menuInk: #E4E7EC;
+  --dockBg: rgba(38, 42, 52, 0.62);
+  --tile0: #2A2F3A;
+  --tile1: #323846;
+  --tile2: #262B35;
+  --metal1: #3B3E45;
+  --metal2: #1D1F24;
+
+  --cc: #D77757;
+  --ccSel: #B1B9F9;
+  --ccOk: #4EBA65;
+  --ccWarn: #E5B84B;
+  --ccText: #ECEEF2;
+  --ccDim: #9A9FAA;
+  --ccFaint: #5E6470;
+  --ccBorder: #6E737D;
+  --ccBash: #FD5DB1;
+  --ccUser: #22252D;
+  --tBar: #1B1E25;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  font-feature-settings: "tnum" 1, "cv11" 1;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+#stage { position: relative; overflow: hidden; background: var(--bg); contain: strict; }
+
+.cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.abs { position: absolute; }
+.row { display: flex; align-items: center; }
+.center { display: flex; align-items: center; justify-content: center; }
+.mask { overflow: hidden; }
+.t { display: inline-block; white-space: nowrap; line-height: 1.3; vertical-align: top; }
+i { display: block; font-style: normal; }
+
+.term { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 15px; line-height: 23px; color: var(--ccText); font-feature-settings: "calt" 0, "liga" 0; }
+.ln { position: absolute; left: 0; height: 23px; white-space: pre; }
+.b { font-weight: 700; }
+.dim { color: var(--ccDim); }
+.faint { color: var(--ccFaint); }
+.ok { color: var(--ccOk); }
+.cc { color: var(--cc); }
+.sel { color: var(--ccSel); }
+.warn { color: var(--ccWarn); }
+.acc { color: var(--accent); }
+.g { display: inline-block; position: relative; width: 9px; height: 23px; vertical-align: top; }
+.g-dot::after { content: ""; position: absolute; left: 0.5px; top: 7.5px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.g-elbow::after { content: ""; position: absolute; left: 3px; top: 2px; width: 8px; height: 10px; border-left: 1.5px solid var(--ccFaint); border-bottom: 1.5px solid var(--ccFaint); }
+.g-check::after { content: ""; position: absolute; left: 2.5px; top: 6.5px; width: 4px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(40deg); }

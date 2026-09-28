@@ -1,0 +1,68 @@
+1
+00:00:00,429 --> 00:00:01,629
+Meet Oryn.
+
+2
+00:00:04,179 --> 00:00:06,299
+The dual-pane file manager.
+
+3
+00:00:09,804 --> 00:00:12,494
+Select your files. Drag them across.
+
+4
+00:00:17,304 --> 00:00:20,924
+Browse in a grid, and preview images and Markdown in place.
+
+5
+00:00:22,929 --> 00:00:24,639
+Or switch to columns.
+
+6
+00:00:24,804 --> 00:00:26,294
+Filter as you type.
+
+7
+00:00:27,148 --> 00:00:29,898
+Rename a whole batch, with a live preview.
+
+8
+00:00:31,835 --> 00:00:34,185
+Open a zip like any other folder.
+
+9
+00:00:34,648 --> 00:00:37,410
+Inside a repo, see exactly what changed.
+
+10
+00:00:37,460 --> 00:00:40,850
+Diff, blame and history, right beside your files.
+
+11
+00:00:41,210 --> 00:00:44,040
+And a terminal, already in the right folder.
+
+12
+00:00:44,960 --> 00:00:47,254
+Jump anywhere from the command palette.
+
+13
+00:00:47,304 --> 00:00:50,204
+Even to your servers, over SFTP.
+
+14
+00:00:53,163 --> 00:00:54,519
+On macOS.
+
+15
+00:00:54,569 --> 00:00:55,869
+On Windows.
+
+16
+00:00:56,444 --> 00:00:57,804
+And Linux.
+
+17
+00:01:02,772 --> 00:01:05,332
+Oryn. Your files. In flow.
+

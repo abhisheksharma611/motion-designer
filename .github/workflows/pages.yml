@@ -1,0 +1,46 @@
+name: Site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - site/**
+      - docs/launch-film/preview.mp4
+      - docs/launch-film/poster.jpg
+      - examples/*/preview.mp4
+      - examples/*/poster.jpg
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Put the site and its films together
+        run: |
+          mkdir -p _site/docs/launch-film
+          cp site/index.html site/site.css site/site.js _site/
+          cp docs/launch-film/preview.mp4 docs/launch-film/poster.jpg _site/docs/launch-film/
+          for film in rolyn oryn story; do
+            mkdir -p "_site/examples/$film"
+            cp "examples/$film/preview.mp4" "examples/$film/poster.jpg" "_site/examples/$film/"
+          done
+          sed -i 's#\.\./docs/#docs/#g; s#\.\./examples/#examples/#g' _site/index.html _site/site.js
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+      - id: deployment
+        uses: actions/deploy-pages@v5

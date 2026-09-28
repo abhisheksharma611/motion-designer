@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>motion-designer · launch films for your app, made in Claude Code</title>
+<meta name="description" content="A Claude Code skill that makes launch films of your app: the real interface, cut to music on the beat, checked frame by frame and rendered on your own machine.">
+<link rel="canonical" href="https://designer.ostinos.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://designer.ostinos.com/">
+<meta property="og:title" content="motion-designer">
+<meta property="og:description" content="Launch films for your app, made in Claude Code.">
+<meta property="og:image" content="https://designer.ostinos.com/docs/launch-film/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#5B47F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 210'%3E%3Cpath d='M100 18C156 18 186 64 186 116C186 170 150 202 100 202C50 202 14 170 14 116C14 64 44 18 100 18Z' fill='%23E0703A'/%3E%3Cellipse cx='74' cy='104' rx='17' ry='21' fill='%23fff'/%3E%3Cellipse cx='126' cy='104' rx='17' ry='21' fill='%23fff'/%3E%3Ccircle cx='76' cy='108' r='9' fill='%2317150F'/%3E%3Ccircle cx='128' cy='108' r='9' fill='%2317150F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site.css">
+<script defer src="site.js"></script>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <a class="nav-logo" href="#top" aria-label="motion-designer, back to the top"><span class="pebble-host" data-pebble="logo"></span></a>
+  <a href="#films" data-magnetic><span class="br">[</span>Films<span class="br">]</span></a>
+  <a href="#how" data-magnetic><span class="br">[</span>How it works<span class="br">]</span></a>
+  <a href="#install" data-magnetic><span class="br">[</span>Install<span class="br">]</span></a>
+  <a class="nav-star" href="https://github.com/kaventro/motion-designer" target="_blank" rel="noopener" data-magnetic aria-label="Star motion-designer on GitHub"><svg class="star-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .9l2.2 4.5 4.9.7-3.55 3.46.84 4.9L8 12.13l-4.39 2.33.84-4.9L.9 6.1l4.9-.7z"/></svg><span class="star-word">Star</span><span class="star-count" data-stars hidden></span></a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-pebble pebble-host" data-pebble="hero" data-cursor="Poke" role="img" aria-label="An orange pebble with a face that watches your cursor"></div>
+
+  <div class="intro">
+    <p class="hi"><span>Hi, I'm</span></p>
+    <h1 class="name">
+      <span class="name-text">motion-designer</span>
+      <svg class="swash" viewBox="0 0 600 44" preserveAspectRatio="none" aria-hidden="true"><path d="M8 30 C 120 21, 300 15, 470 19 C 525 20, 566 24, 592 11"/></svg>
+    </h1>
+    <p class="bio">I make launch films of your app inside Claude Code: the real interface, cut to music on the beat, rendered on your own machine.</p>
+    <div class="cta">
+      <button class="btn btn-solid" type="button" data-magnetic data-film="launch"><span>Watch the film</span><span class="btn-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z"/></svg></span></button>
+      <a class="btn btn-glass" href="#install" data-magnetic><span>Install</span></a>
+    </div>
+  </div>
+
+  <div class="slate" aria-hidden="true">
+    <span class="rec"></span><span class="tc" data-tc>00:00:00:00</span>
+    <span class="bpm">128 BPM</span>
+    <span class="beats"><i></i><i></i><i></i><i></i></span>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="films" id="films" aria-labelledby="films-title">
+    <div class="head">
+      <p class="label">[ Films ]</p>
+      <h2 id="films-title">Films it has made</h2>
+      <p class="lede">Each one was planned, built, checked and rendered by the skill in a Claude Code session. They play here without sound; click one to watch it with its music.</p>
+    </div>
+
+    <div class="grid">
+      <a class="film film-launch" href="../docs/launch-film/preview.mp4" data-film="launch" data-cursor="Play">
+        <video src="../docs/launch-film/preview.mp4" poster="../docs/launch-film/poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="tag">The skill's own film</span>
+        <span class="film-info">
+          <strong>motion-designer</strong>
+          <span class="meta">60 s · 128 BPM · Midnight</span>
+          <span class="desc">You watch it work: it reads an app, finds the drop, checks every frame and renders. The music is ACE-Step and the voice is Chatterbox, both made on the same Mac.</span>
+        </span>
+      </a>
+      <div class="stack">
+      <a class="film film-rolyn" href="../examples/rolyn/preview.mp4" data-film="rolyn" data-cursor="Play">
+        <video src="../examples/rolyn/preview.mp4#t=24.2" poster="../examples/rolyn/poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="tag">iOS</span>
+        <span class="film-info">
+          <strong>Rolyn</strong>
+          <span class="meta">46.5 s · 129 BPM · Meadow</span>
+          <span class="desc">A finance app rebuilt from its SwiftUI code, inside an iPhone the whole time.</span>
+        </span>
+      </a>
+      <a class="film film-oryn" href="../examples/oryn/preview.mp4" data-film="oryn" data-cursor="Play">
+        <video src="../examples/oryn/preview.mp4#t=15" poster="../examples/oryn/poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="tag">Desktop</span>
+        <span class="film-info">
+          <strong>Oryn</strong>
+          <span class="meta">67.5 s · 128 BPM · Warm ink</span>
+          <span class="desc">A file manager's real Tauri frontend, captured as it is. The film only moves the camera and the pointer.</span>
+        </span>
+      </a>
+      </div>
+      <a class="film film-story" href="../examples/story/preview.mp4" data-film="story" data-cursor="Play">
+        <video src="../examples/story/preview.mp4" poster="../examples/story/poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="tag">Story</span>
+        <span class="film-info">
+          <strong>Appname</strong>
+          <span class="meta">27.4 s · 105 BPM</span>
+          <span class="desc">A made-up planner told with a character, three panels and an end card. Every action on screen makes its own small sound.</span>
+        </span>
+      </a>
+      <div class="kinds">
+        <p class="label">What it makes</p>
+        <ul class="kind-list">
+          <li>Product films in an iPhone or a laptop window</li>
+          <li>Stories in panels with your character</li>
+          <li>Feature cards</li>
+          <li>Type-led films</li>
+          <li>Short stings</li>
+        </ul>
+        <p class="label">Seven styles</p>
+        <ul class="chips">
+          <li>Brand-native</li><li>Meadow</li><li>Warm ink</li><li>Midnight</li><li>Field guide</li><li>Paper and ink</li><li>Color block</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how" aria-labelledby="how-title">
+    <div class="head">
+      <p class="label">[ How it works ]</p>
+      <h2 id="how-title">Type <code>/motion-designer</code> and say what you need</h2>
+      <p class="lede">It starts in plan mode, reads the app and writes a brief. Nothing is built until you approve it.</p>
+    </div>
+
+    <div class="how-grid">
+      <figure class="term" aria-label="A real run of the skill on Rolyn, shortened">
+        <div class="term-bar"><i></i><i></i><i></i><span>Rolyn · claude</span></div>
+        <div class="term-body">
+          <p class="u"><span class="dim">&gt;</span> <span class="cmd">/motion-designer</span> make a video for my app</p>
+          <p><span class="dot">⏺</span> Here's the plan: <b>Meadow</b>, 46.5 s at 129 BPM, and four stills for your approval.</p>
+          <p class="sub"><span class="dim">beat  1  0:00</span>  the dot draws the balance line and the phone forms</p>
+          <p class="sub"><span class="dim">beat 19  0:08</span>  voice entry: the phrase appears as it is said</p>
+          <p class="sub"><span class="dim">beat 53  0:24</span>  <span class="acc">drop</span>: the new row grows into the cash-flow card</p>
+          <p><span class="dot g">⏺</span> <b>Bash</b>(python3 …/music_edit.py audio/source/track.mp3 audio/grid.json --from-bar 4 --bars 25)</p>
+          <p class="out">bars 4–28: 5.7404s → 52.2571s, 100 beats at 128.998 BPM = 2791 frames</p>
+          <p class="out">  track bar 17 (<span class="acc">drop</span>) → film beat 53 at 24.187s</p>
+          <p><span class="dot g">⏺</span> <b>Bash</b>(node …/scripts/check.mjs src/index.html)</p>
+          <p class="out"><span class="ok">PASS</span>  no clock, timer, randomness or CSS animation in src/</p>
+          <p class="out"><span class="ok">PASS</span>  every 0.05s from 0 to 46.50s without page errors</p>
+          <p class="out"><span class="ok">PASS</span>  frames are the same whatever order they are sought in</p>
+          <p class="out"><span class="ok">PASS</span>  the loop closes: 46.517s equals 0s</p>
+          <p><span class="dot g">⏺</span> <b>Bash</b>(node …/render.mjs video src/index.html out/rolyn-launch-film.mp4 --scale 2)</p>
+          <p class="out">out/rolyn-launch-film.mp4: 2791 frames</p>
+        </div>
+      </figure>
+
+      <ol class="steps">
+        <li><span class="n">01</span><div><h3>Brief</h3><p>Works out the product's name, reads what the app does and writes the film scene by scene: the materials, the look, the story.</p></div></li>
+        <li><span class="n">02</span><div><h3>Beat map</h3><p>Makes an original track or takes yours, finds the tempo, bar one and the drop, and puts every move on a beat. Four stills come first, for you to approve.</p></div></li>
+        <li><span class="n">03</span><div><h3>Build</h3><p>Rebuilds your real screens in HTML from the code and screenshots, inside an iPhone or a window on a laptop. Web, Tauri and Electron apps can be captured as they are.</p></div></li>
+        <li><span class="n">04</span><div><h3>Check</h3><p>Reads the code for clocks, timers and random numbers, seeks through the film every 0.05 s looking for errors and makes sure the loop closes.</p></div></li>
+        <li><span class="n">05</span><div><h3>Render</h3><p>Headless Chrome into ffmpeg, supersampled 2×. You also get a muted loop, a poster and the whole film as one HTML file.</p></div></li>
+      </ol>
+    </div>
+
+    <div class="local">
+      <h3>It all runs on your machine</h3>
+      <ul>
+        <li><span class="k">Music</span><span class="v">ACE-Step 1.5</span><span class="l">MIT</span></li>
+        <li><span class="k">Voice</span><span class="v">Chatterbox or Kokoro-82M</span><span class="l">MIT · Apache-2.0</span></li>
+        <li><span class="k">Sounds</span><span class="v">synthesized by sfx.py</span><span class="l">original</span></li>
+        <li><span class="k">Render</span><span class="v">Chrome and ffmpeg</span><span class="l">local</span></li>
+      </ul>
+      <p>No API keys, no cloud renders. The skill itself is MIT-licensed.</p>
+    </div>
+
+    <div class="stats">
+      <p class="label">The skill's own film took one session</p>
+      <dl>
+        <div><dt>2 h 21 min</dt><dd>of work, pauses over ten minutes left out</dd></div>
+        <div><dt>371,277</dt><dd>tokens written</dd></div>
+        <div><dt>111.6 M</dt><dd>tokens read, almost all from the cache</dd></div>
+        <div><dt>221</dt><dd>tool calls</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="install" id="install" aria-labelledby="install-title">
+    <div class="head">
+      <p class="label">[ Install ]</p>
+      <h2 id="install-title">One line, then one command</h2>
+    </div>
+
+    <div class="install-card">
+      <div class="install-pebble pebble-host" data-pebble="install" data-cursor="Poke" aria-hidden="true"></div>
+      <div class="cmdline">
+        <code><span class="dim">$</span> npx skills add kaventro/motion-designer</code>
+        <button class="copy" type="button" data-copy="npx skills add kaventro/motion-designer" data-magnetic>Copy</button>
+      </div>
+      <p class="then">Then open your app's repository in Claude Code and type <code>/motion-designer</code>.</p>
+      <div class="plugin">
+        <p class="plugin-title">Or as a Claude Code plugin</p>
+        <div class="plugin-body">
+          <code>/plugin marketplace add kaventro/motion-designer</code>
+          <code>/plugin install motion-designer@motion-designer</code>
+          <p>Plugin commands carry the plugin's name, so there the command is <code>/motion-designer:motion-designer</code>.</p>
+        </div>
+      </div>
+      <p class="needs">It needs Node 22+, Chrome, ffmpeg, Python 3 and uv. On the first run it checks what's missing, tells you why it needs it and installs only what you agree to. The voice and music models come only when you want a voiceover or an original track.</p>
+      <div class="star-row">
+        <p>If you like it, a star on GitHub helps other people find it.</p>
+        <a class="btn btn-star" href="https://github.com/kaventro/motion-designer" target="_blank" rel="noopener" data-magnetic><svg class="star-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .9l2.2 4.5 4.9.7-3.55 3.46.84 4.9L8 12.13l-4.39 2.33.84-4.9L.9 6.1l4.9-.7z"/></svg><span>Star on GitHub</span><span class="star-count" data-stars hidden></span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p class="sign">motion-designer</p>
+  <nav class="foot-links" aria-label="Links">
+    <a href="https://github.com/kaventro/motion-designer">GitHub</a>
+    <a href="https://github.com/kaventro/motion-designer#readme">README</a>
+    <a href="https://github.com/kaventro/motion-designer/blob/main/LICENSE">MIT License</a>
+  </nav>
+  <p class="credits">Music in the films: “Digital Clouds” by Alejandro Magaña (<a href="https://mixkit.co/license/">Mixkit License</a>) in Rolyn; “Ethereal Pulse” by <a href="https://surf-house-productions.bandcamp.com">Surf House Productions</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>) in Oryn; original ACE-Step tracks in the story film and the skill's own film. Voices made with Chatterbox carry Resemble AI's inaudible watermark. Rolyn and Oryn are real apps by the author, Appname is made up, and the merchant logos in Rolyn belong to their owners. Claude Code is made by Anthropic; this skill is independent.</p>
+</footer>
+
+<dialog class="player" aria-label="Film">
+  <div class="player-frame">
+    <video controls playsinline></video>
+    <p class="player-cap"></p>
+  </div>
+  <button class="player-close" type="button" aria-label="Close" data-cursor="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+</dialog>
+
+<div class="cursor" aria-hidden="true"><div class="cursor-ring"><span></span></div><div class="cursor-dot"></div></div>
+
+</body>
+</html>

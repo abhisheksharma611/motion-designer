@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+node_modules/
+# Renders, music and anything downloaded stay out of the repository.
+out/
+audio/
+work/
+evals/results/
