@@ -1,18 +1,6 @@
 ---
 name: motion-designer
-description: >-
-  Make short videos from code: launch films of apps (the real UI in an iPhone or a
-  laptop window, or a story in panels), and any other short video: titles and stings,
-  kinetic type, explainers, data videos, music videos, photo montages, and lower thirds
-  or captions over footage, with a library of effects and transitions. Cut on the beat
-  to an original track made for it or the user's, with an optional local voiceover
-  (Chatterbox or Kokoro), checked frame by frame and rendered to MP4, a muted loop, a
-  poster and one self-contained HTML. Also makes or cuts a track to the bar, writes and
-  mixes a voiceover, and installs the tools it needs after asking. Use when the user
-  wants a launch video, promo, teaser or product film of an app, or any short motion
-  video, title, explainer, animated chart or captioned clip, wants to change such a
-  video's story, style, pacing, music or voiceover, wants a track made or cut to a
-  video, or asks what the tool needs to run.
+description: "Make short videos from code: launch films of apps (the real UI in an iPhone or a laptop window, or a story in panels), and any other short video: titles and stings, kinetic type, explainers, data videos, music videos, photo montages, and lower thirds or captions over footage, with a library of effects and transitions. Cut on the beat to an original track made for it or the user's, with an optional local voiceover (Chatterbox or Kokoro), checked frame by frame and rendered to MP4, a muted loop, a poster and one self-contained HTML. Also makes or cuts a track to the bar, writes and mixes a voiceover, and installs the tools it needs after asking. Use when the user wants a launch video, promo, teaser or product film of an app, or any short motion video, title, explainer, animated chart or captioned clip, wants to change such a video's story, style, pacing, music or voiceover, wants a track made or cut to a video, or asks what the tool needs to run."
 argument-hint: "[app project dir] [mobile | desktop] [square | vertical | landscape] [length, e.g. 45s]"
 ---
 
